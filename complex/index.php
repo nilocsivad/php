@@ -98,7 +98,8 @@ switch (ENVIRONMENT)
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = 'system';
+	#$system_path = 'system';
+	$system_path = dirname(__FILE__) . '/system';
 
 /*
  *---------------------------------------------------------------
@@ -113,7 +114,8 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'application';
+	//$application_folder = '/application';
+	$application_folder = dirname(__FILE__) . '/application';
 
 /*
  *---------------------------------------------------------------
@@ -128,7 +130,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '';
+	$view_folder = '/views';
 
 
 /*

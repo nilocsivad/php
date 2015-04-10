@@ -1,0 +1,23 @@
+
+	此处修改 系统 及 程序 文件夹
+	eclipse 通过 egit 插件下载下的程序本地(我这边)不能正确通过 apache httpd 访问
+	ln -s .../{ProjectName}/index.php /var/www/html/{ProjectName}/index.php
+	通过创建软链接实现可以访问
+	但是会报错
+		// 1.
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+		// 2.
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	因此追加 dirname(__FILE__) 正确读取本地真实路径方可解决
+	如在使用中遇到问题 请修改回源代码继续使用 (^_^)...
+
+	#$system_path = 'system';
+	$system_path = dirname(__FILE__) . '/system';
+		
+	//$application_folder = '/application';
+	$application_folder = dirname(__FILE__) . '/application';
+
