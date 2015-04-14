@@ -49,3 +49,35 @@
 	
 } // end of part.4
 
+{ // part.5
+
+	刚同步完 github 代码, 运行报错
+	Forbidden
+	You don't have permission to access /complex/index.php on this server.
+	本人用的是 CentOS , 执行
+		vi /etc/httpd/conf/httpd.conf
+			User apache
+			Group apache
+		修改为
+			User 用户名
+			Group 用户组
+	退出修改
+		service httpd restart
+
+} // end of part.5
+
+{ // part.6
+
+	因为设置了自动加载 session
+		$autoload['libraries'] = array('database', 'session', 'pagination');
+	貌似会报如下错误
+		An uncaught Exception was encountered
+		Type: Exception
+		Message: Session: Configured save path '/var/lib/php/session' is not writable by the PHP process.
+		Filename: /home/Colin/Resources/git/php/complex/system/libraries/Session/drivers/Session_files_driver.php
+		Line Number: 124
+	
+	执行
+		chown -R 用户名:用户组 /var/lib/php/session/
+
+} // end of part.6
