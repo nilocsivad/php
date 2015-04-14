@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+
+$URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -10,6 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
+	
+	* {
+		margin: 0;
+		padding: 0;
+	}
 
 	body {
 		background-color: #fff;
@@ -23,57 +32,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		background-color: transparent;
 		font-weight: normal;
 	}
+	
+	p {
+		height: 40px;
+		line-height: 40px;
+	}
+	
+	ul, ol, li {
+		list-style: none;
+	}
 
-	h1 {
+	h1, h2, h3, h4, h5, h6 {
 		color: #444;
 		background-color: transparent;
 		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
+		font-size: 120%;
 		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
+		margin: 10px 0;
+		padding: 10px;
 	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
+	
+	input {
+		outline: none;
+		padding: 2px;
+	}
+	
+	input[type=button], input[type=reset], input[type=submit] {
+		outline: none;
+		padding: 4px 6px;
 	}
 
 	#body {
 		margin: 0 15px 0 15px;
 	}
 
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
 	#container {
 		margin: 10px;
+		padding: 10px;
 		border: 1px solid #D0D0D0;
 		box-shadow: 0 0 8px #D0D0D0;
 	}
 	</style>
+	<script type="text/javascript">
+	function valid() {
+		var form = document.getElementById("website_new_form");
+		var v_url = form.url.value;
+		if (v_url != "" && (v_url.search("http://\w?") == 0 || v_url.search("https://\w?") == 0)) {
+			return true;
+		} else {
+			document.getElementById("error_msg").innerHTML = ("is not a URL!");
+			return false;
+		}
+	}
+	</script>
 </head>
 <body>
 
-<div id="container">
-	<h1><a href="<?php echo $this->config->item("base_url")?>">Welcome to CodeIgniter!</a></h1>
-
-	<div id="body">
+	<div id="container">
+	
+		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
+	
+		<div id="body">
 		
+			<form id="website_new_form" action="<?php echo $URL?>/website/insert" method="post">
+				<p>
+					<span style="display:inline-block;width:80px;text-align:right;">URL:</span>
+					<input name="url" style="width:300px;" type="text" />
+					<span id="error_msg" style="color:red;font-size:20px;"></span>
+				</p>
+				<p>
+					<span style="display:inline-block;width:80px;text-align:right;">Description:</span>
+					<input name="description" style="width:300px;" type="text" />
+				</p>
+				<p>
+					<span style="display:inline-block;width:80px;"></span>
+					<input value="Insert" onclick="return valid();" style="cursor:pointer;" type="submit" />
+				</p>
+			</form>
+		</div>
 	</div>
-</div>
 
 </body>
 </html>

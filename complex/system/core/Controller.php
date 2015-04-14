@@ -50,6 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link		http://codeigniter.com/user_guide/general/controllers.html
  */
 class CI_Controller {
+	
+	/**
+	 * $this->config->item("base_url") + $this->config->item("index_page")
+	 */
+	protected $base_url;
 
 	/**
 	 * Reference to the CI singleton
@@ -78,6 +83,8 @@ class CI_Controller {
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
+		
+		$this->base_url = ( $this->config->item("base_url") . $this->config->item("index_page") );
 	}
 
 	// --------------------------------------------------------------------
@@ -91,6 +98,43 @@ class CI_Controller {
 	public static function &get_instance()
 	{
 		return self::$instance;
+	}
+	
+	/**
+	 * jump to ~~~
+	 */
+	protected function go() {
+		
+		if ( isset( $_GET["path"]) ) {
+				
+			$this->path( $_GET["path"] );
+				
+		} else if ( isset( $_GET["url"]) ) {
+				
+			$this->url( $_GET["url"] );			
+				
+		} else {
+				
+			$this->load->view("welcome_message");
+		}
+	}
+	
+	protected function path($path, $data = null) {
+
+		$path = ( empty( $path ) ? "welcome_message" : $path );
+		
+		$this->load->view($path, $data);
+	}
+	
+	protected function url($url) {
+		
+		$url = ( empty( $url ) ? "/p" : ("/" . $url) );
+		
+		header("Location:" . $this->base_url . $url);
+	}
+	
+	protected  function error($code, $text = null) {
+		header('Status: ' . $code . ' ' . $text, TRUE);
 	}
 
 }
