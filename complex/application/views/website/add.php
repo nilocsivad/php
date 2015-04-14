@@ -63,7 +63,7 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 	}
 
 	#body {
-		margin: 0 15px 0 15px;
+		margin: 0 15px;
 	}
 
 	#container {
