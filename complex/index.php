@@ -99,6 +99,7 @@ switch (ENVIRONMENT)
  * as this file.
  */
 	#$system_path = 'system';
+	/** read note.txt if you have some problems about the next line **/
 	$system_path = dirname(__FILE__) . '/system';
 
 /*
@@ -115,6 +116,7 @@ switch (ENVIRONMENT)
  * NO TRAILING SLASH!
  */
 	//$application_folder = '/application';
+	/** read note.txt if you have some problems about the next line **/
 	$application_folder = dirname(__FILE__) . '/application';
 
 /*
@@ -130,7 +132,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '/views';
+	$view_folder = '';
 
 
 /*

@@ -1,4 +1,6 @@
 
+{ // part.1
+
 	此处修改 系统 及 程序 文件夹
 	eclipse 通过 egit 插件下载下的程序本地(我这边)不能正确通过 apache httpd 访问
 	ln -s .../{ProjectName}/index.php /var/www/html/{ProjectName}/index.php
@@ -20,4 +22,30 @@
 		
 	//$application_folder = '/application';
 	$application_folder = dirname(__FILE__) . '/application';
+	
+} // end of part.1
+
+
+{ // part.2
+
+	Controller.php 只能首字母大写,其它字母全小写(或者后面的和URL完全一样)才能做到大小写访问无所谓
+	HelloWorld extends CI_Controller 控制名称就无所谓了
+	
+} // end of part.2
+
+{ // part.3
+	
+	Controller 方法跳转到 其它方法
+		$this->config->item("base_url") 获取 项目名 之前的部分
+		$this->config->item("index_page") 获取 index.php 的值 如果隐藏则为 ""  
+	header("Location:" . $this->config->item("base_url") . $this->config->item("index_page") . "/welcome/index");
+
+} // end of part.3
+
+{ // part.4
+	
+	routes.php 修改了 Welcome 控制器的名称, 需要改此处的默认设置
+	$route['default_controller'] = 'p';
+	
+} // end of part.4
 
