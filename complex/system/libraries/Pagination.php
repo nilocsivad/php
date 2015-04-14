@@ -556,7 +556,7 @@ class CI_Pagination {
 		$output = '';
 
 		// Render the "First" link.
-		if ($this->first_link !== FALSE && $this->cur_page > ($this->num_links + 1 + ! $this->num_links))
+		if (/* $this->first_link !== FALSE &&  */$this->cur_page > ($this->num_links + 1 + ! $this->num_links))
 		{
 			// Take the general parameters, and squeeze this pagination-page attr in for JS frameworks.
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, 1);
@@ -575,14 +575,14 @@ class CI_Pagination {
 			if ($i === $base_page)
 			{
 				// First page
-				$output .= $this->prev_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('prev').'>'
-					.$this->prev_link.'</a>'.$this->prev_tag_close;
+				$output .= $this->prev_tag_open.'&nbsp;<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('prev').'>'
+					.'&nbsp;'.$this->prev_link.'&nbsp;'.'</a>&nbsp;'.$this->prev_tag_close;
 			}
 			else
 			{
 				$append = $this->prefix.$i.$this->suffix;
-				$output .= $this->prev_tag_open.'<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('prev').'>'
-					.$this->prev_link.'</a>'.$this->prev_tag_close;
+				$output .= $this->prev_tag_open.'&nbsp;<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('prev').'>'
+					.'&nbsp;'.$this->prev_link.'&nbsp;'.'</a>&nbsp;'.$this->prev_tag_close;
 			}
 
 		}
@@ -602,19 +602,19 @@ class CI_Pagination {
 					if ($this->cur_page === $loop)
 					{
 						// Current page
-						$output .= $this->cur_tag_open.$loop.$this->cur_tag_close;
+						$output .= '&nbsp;'.$this->cur_tag_open.'&nbsp;'.$loop.'&nbsp;'.$this->cur_tag_close.'&nbsp;';
 					}
 					elseif ($i === $base_page)
 					{
 						// First page
-						$output .= $this->num_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
-							.$loop.'</a>'.$this->num_tag_close;
+						$output .= $this->num_tag_open.'&nbsp;<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
+							.'&nbsp;'.$loop.'&nbsp;'.'</a>&nbsp;'.$this->num_tag_close;
 					}
 					else
 					{
 						$append = $this->prefix.$i.$this->suffix;
-						$output .= $this->num_tag_open.'<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('start').'>'
-							.$loop.'</a>'.$this->num_tag_close;
+						$output .= $this->num_tag_open.'&nbsp;<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('start').'>'
+							.'&nbsp;'.$loop.'&nbsp;'.'</a>&nbsp;'.$this->num_tag_close;
 					}
 				}
 			}
@@ -627,12 +627,12 @@ class CI_Pagination {
 
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, (int) $i);
 
-			$output .= $this->next_tag_open.'<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
-				.$this->_attr_rel('next').'>'.$this->next_link.'</a>'.$this->next_tag_close;
+			$output .= $this->next_tag_open.'&nbsp;<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
+				.$this->_attr_rel('next').'>'.'&nbsp;'.$this->next_link.'&nbsp;'.'</a>&nbsp;'.$this->next_tag_close;
 		}
 
 		// Render the "Last" link
-		if ($this->last_link !== FALSE && ($this->cur_page + $this->num_links + ! $this->num_links) < $num_pages)
+		if (/* $this->last_link !== FALSE &&  */($this->cur_page + $this->num_links + ! $this->num_links) < $num_pages)
 		{
 			$i = ($this->use_page_numbers) ? $num_pages : ($num_pages * $this->per_page) - $this->per_page;
 

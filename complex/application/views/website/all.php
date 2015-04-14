@@ -73,6 +73,8 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 		box-shadow: 0 0 8px #D0D0D0;
 	}
 	</style>
+	<script type="text/javascript">
+	</script>
 </head>
 <body>
 
@@ -81,7 +83,25 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
 	
 		<div id="body">
-			
+			<table>
+				<tr>
+					<th width="100" align="left">ID</th>
+					<th width="400" align="left">URL</th>
+					<th width="200" align="left">Description</th>
+				</tr>
+				<?php foreach ($results as $row) :?>
+					<tr>
+						<td title="<?php echo $row["websiteID"]?>"><?php echo $row["websiteID"]?></td>
+						<td title="<?php echo $row["url"]?>"><div><?php echo $row["url"]?></div></td>
+						<td title="<?php echo $row["description"]?>"><div><?php echo $row["description"]?></div></td>
+					</tr>
+				<?php endforeach;?>
+				<tr>
+					<td colspan="3">
+						<?php echo $this->pagination->create_links()?>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 
