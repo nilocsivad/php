@@ -3,26 +3,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class P extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index() {
 		
-		$path = ( isset( $_GET["path"] ) ? $_GET["path"] : "welcome_message" );
-		$path = ( empty( $path ) ? "welcome_message" : $path );
+		if ( isset( $_GET["path"]) ) {
+			
+			$path = $_GET["path"];
+			$path = ( empty( $path ) ? "welcome_message" : $path );
+			
+			$this->load->view($path);
+			
+		} else if ( isset( $_GET["url"]) ) {
+			
+			$href = ( $this->config->item("base_url") . $this->config->item("index_page") );
+			
+			$url = $_GET["url"];
+			$url = ( empty( $url ) ? "/p" : ("/" . $url) );
+			
+			header("Location:" . $href . $url);
+			
+		} else {
+			
+			$this->load->view("welcome_message");
+		}
 		
-		$this->load->view($path);
 	}
+	
 }
