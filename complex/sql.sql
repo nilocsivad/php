@@ -34,15 +34,28 @@ Database changed
 
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/14/2015 10:03:59 PM                        */
+/* Created on:     4/15/2015 11:10:12 PM                        */
 /*==============================================================*/
 
+
+drop table if exists tbl_Account;
 
 drop table if exists tbl_DoubleColorBall;
 
 drop table if exists tbl_WebSite;
 
 drop table if exists tbl_WebSiteType;
+
+/*==============================================================*/
+/* Table: tbl_Account                                           */
+/*==============================================================*/
+create table tbl_Account
+(
+   lname                varchar(16) not null,
+   lpass                char(32) not null comment 'MD5ŒÓÃÜŽæŽ¢',
+   status               int(2) default 0 comment '0:Normal  1:Disabled  2:Deleted',
+   primary key (lname)
+);
 
 /*==============================================================*/
 /* Table: tbl_DoubleColorBall                                   */
@@ -67,7 +80,7 @@ create table tbl_DoubleColorBall
 /*==============================================================*/
 create table tbl_WebSite
 (
-   websiteID               int not null auto_increment,
+   siteID               int not null auto_increment,
    url                  text,
    description          text,
    primary key (siteID)

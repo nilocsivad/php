@@ -100,6 +100,19 @@ class CI_Controller {
 		return self::$instance;
 	}
 	
+	const SIGNIN_KEY = "IS_SIGNIN_COMPLEX";
+	const SESSION_KEY = "SIGNIN_SESSION";
+	
+	protected function valid_session() {
+		
+		$this->load->helper("url");
+		
+		if ( $this->session->userdata(self::SIGNIN_KEY) == false ) {
+			$this->path("login");
+			return;
+		}
+	}
+	
 	/**
 	 * jump to ~~~
 	 */
@@ -121,7 +134,7 @@ class CI_Controller {
 	
 	protected function path($path, $data = null) {
 
-		$path = ( empty( $path ) ? "welcome_message" : $path );
+		$path = ( empty( $path ) ? "login" : $path );
 		
 		$this->load->view($path, $data);
 	}

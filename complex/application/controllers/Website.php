@@ -59,7 +59,7 @@ class WebSite extends CI_Controller {
 			
 			$result = $this->Mdl_website->insert($data);
 			
-			if ($result["return"] > 0 && $result["lastID"] > 0) {
+			if ($result["return"] > 0 || $result["lastID"] > 0) {
 				$this->url("website/all");
 			} else {
 				$info = array( 
@@ -83,7 +83,7 @@ class WebSite extends CI_Controller {
 			// ** load the model and get results
 			$this->load->model('website/Mdl_website');
 			$websiteID = $_GET["websiteID"];
-			$data["result"] = $this->Mdl_website->remove($websiteID);
+			$this->Mdl_website->remove($websiteID);
 			$this->url("website/all");
 		}
 	}

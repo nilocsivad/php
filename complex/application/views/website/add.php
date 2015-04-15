@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
+$BASE_URL = ( $this->config->item("base_url") );
+$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>

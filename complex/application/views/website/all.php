@@ -13,11 +13,6 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 	<link href="<?php echo ( $BASE_URL . "resources/styles/general.css" )?>" rel="stylesheet" type="text/css" />
 	<style type="text/css">
-	.cell {
-		display: block;
-		width: 98%;
-		overflow: hidden;
-	}
 	</style>
 	<script type="text/javascript">
 	</script>
@@ -33,19 +28,21 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		</p>
 	
 		<div id="body">
-			<table style="text-align:left;">
+			<table style="text-align:left;border:none;" cellspacing="0">
 				<tr>
-					<th style="min-width:50px;">ID</th>
+					<th style="min-width:50px;">No</th>
 					<th style="min-width:350px;">URL</th>
 					<th style="min-width:200px;">Description</th>
 					<th>Operating</th>
 				</tr>
+				<?php $no = $this->pagination->cur_page * $this->pagination->per_page; ?>
 				<?php foreach ($results as $row) :?>
+					<?php $no++ ?>
 					<tr>
-						<td title="<?php echo $row["websiteID"]?>"><div class="cell"><?php echo $row["websiteID"]?></div></td>
-						<td title="<?php echo $row["url"]?>"><div class="cell"><?php echo $row["url"]?></div></td>
-						<td title="<?php echo $row["description"]?>"><div class="cell"><?php echo $row["description"]?></div></td>
-						<td>
+						<td class="top_line" title="<?php echo $no?>"><div class="cell"><?php echo $no?></div></td>
+						<td class="top_line" title="<?php echo $row["url"]?>"><div class="cell"><?php echo $row["url"]?></div></td>
+						<td class="top_line" title="<?php echo $row["description"]?>"><div class="cell"><?php echo $row["description"]?></div></td>
+						<td class="top_line">
 							<a href="<?php echo ( $URL . "/website/remove?websiteID=" . $row["websiteID"])?>">Delete</a>
 							<span>&nbsp;</span>
 							<a href="<?php echo ( $URL . "/website/update?websiteID=" . $row["websiteID"])?>">Update</a>
@@ -53,7 +50,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 					</tr>
 				<?php endforeach;?>
 				<tr>
-					<td colspan="4">
+					<td class="top_line" colspan="4">
 						<?php echo $this->pagination->create_links()?>
 					</td>
 				</tr>

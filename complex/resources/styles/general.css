@@ -30,10 +30,6 @@ p.high {
 	line-height:40px;
 }
 
-p.line {
-	border-bottom:1px solid #D0D0D0;
-}
-
 ul, ol, li {
 	list-style: none;
 }
@@ -58,8 +54,31 @@ input[type=button], input[type=reset], input[type=submit] {
 	padding: 4px 6px;
 }
 
+tr, th, td {
+	height:120%;
+	line-height:120%;
+	padding:8px 0;
+	_padding:4px 0;
+}
+
+.cell {
+	display:block;
+	width:98%;
+	padding:1px;
+	overflow:hidden;
+}
+
 .clear {
 	clear:both;
+}
+
+.top_line {
+	border:none;
+	border-top:1px solid #D0D0D0;
+}
+
+.under_line {
+	border-bottom:1px solid #D0D0D0;
 }
 
 #container {
