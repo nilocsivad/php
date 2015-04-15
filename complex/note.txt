@@ -81,3 +81,11 @@
 		chown -R 用户名:用户组 /var/lib/php/session/
 
 } // end of part.6
+
+{ // part.7
+	
+	静态资源引用
+	
+	
+} // end of part.7
+

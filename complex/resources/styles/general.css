@@ -10,7 +10,6 @@
 
 body {
 	background-color: #fff;
-	margin: 40px;
 	font: 13px/20px normal Helvetica, Arial, sans-serif;
 	color: #4F5155;
 }
@@ -22,8 +21,17 @@ a {
 }
 
 p {
-	height: 40px;
-	line-height: 40px;
+	height:22px;
+	line-height:22px;
+}
+
+p.high {
+	height:40px;
+	line-height:40px;
+}
+
+p.line {
+	border-bottom:1px solid #D0D0D0;
 }
 
 ul, ol, li {
@@ -50,8 +58,8 @@ input[type=button], input[type=reset], input[type=submit] {
 	padding: 4px 6px;
 }
 
-#body {
-	margin: 0 15px;
+.clear {
+	clear:both;
 }
 
 #container {
@@ -59,4 +67,8 @@ input[type=button], input[type=reset], input[type=submit] {
 	padding: 10px;
 	border: 1px solid #D0D0D0;
 	box-shadow: 0 0 8px #D0D0D0;
+}
+
+#body {
+	margin: 6px;
 }

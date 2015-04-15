@@ -38,15 +38,16 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 	
 		<div id="body">
 		
-			<form id="website_new_form" action="<?php echo ( $URL . "/website/insert" )?>" method="post">
+			<form id="website_new_form" action="<?php echo ( $URL . "/website/modify" )?>" method="post">
+				<input name="websiteID" value="<?php echo $result[0]->websiteID?>" type="hidden" />
 				<p class="high">
 					<span style="display:inline-block;width:80px;text-align:right;">URL:</span>
-					<input name="url" style="width:300px;" type="text" />
+					<input name="url" value="<?php echo $result[0]->url?>" style="width:300px;" type="text" />
 					<span id="error_msg" style="color:red;font-size:20px;"></span>
 				</p>
 				<p class="high">
 					<span style="display:inline-block;width:80px;text-align:right;">Description:</span>
-					<input name="description" style="width:300px;" type="text" />
+					<input name="description" value="<?php echo $result[0]->description?>" style="width:300px;" type="text" />
 				</p>
 				<p class="high">
 					<span style="display:inline-block;width:80px;"></span>

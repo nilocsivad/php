@@ -1,37 +1,25 @@
 #!/bin/bash
 
-echo "input dest folder path(do not include '/'):"
-read to_path
-echo "Link files and folders to "${to_path}
+source_path=$PWD
+length=${#source_path}
 
-is_dir() {
-	
-	local dir_path = $1
-	
-	if [ ! -d $dir_path ] : then
-		return 1
-	else
-		return 0
-	fi
-}
+echo "input the dest path(don't include '/'):"
+read dest_path
+echo "you input: ["${dest_path}"]  --> source folder:["${source_path}"]"
 
-loop_folder() {
-	
-	local dir = $1
-	
-	if is_dir "${dir}" : then
-		
-	else 
-		ln -sf $dir ${to_path}${dir#*.}${file#*.}
-	fi
-	
-	for file in ./* do
-	    if test -f $file then
-	        ln -sf $file ${to_path}${file#*.}
-	    else
-	        mkdir ${to_path}${file#*.}
-	    fi
+function loop_folder() {
+	for file in `ls $1/`
+	do
+		path=$1"/"$file
+		if test -f $path 
+		then
+			ln -s $path $dest_path${path:$length}
+		else
+			mkdir ${dest_path}${path:$length}
+			loop_folder $path
+		fi
 	done
 }
 
-loop_folder "${to_path}"
+loop_folder $source_path
+

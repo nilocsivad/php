@@ -2,10 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class WebSite extends CI_Controller {
+	
+	const PAGE_SIZE = 30;
 
 	public function index() {
 		
-		$per_page = 5;
 		$offset = $this->uri->segment(3);
 		$offset = empty($offset) ? 0 : $offset;
 		
@@ -14,12 +15,12 @@ class WebSite extends CI_Controller {
 		
 		$total_rows = $this->Mdl_website->count_all();
 		
-		$data["results"] = $this->Mdl_website->get_websites( $per_page, $offset )->result_array();
+		$data["results"] = $this->Mdl_website->get_websites( WebSite::PAGE_SIZE, $offset )->result_array();
 		
 		{ // ** 自动创建分页区域
 			$config['base_url'] = $this->base_url . '/website/all/';
 			$config['total_rows'] = $total_rows;
-			$config['per_page'] = $per_page;
+			$config['per_page'] = WebSite::PAGE_SIZE;
 			$config['full_tag_open'] = '<div>';
 			$config['full_tag_close'] = '</div>';
 			$config['use_page_numbers'] = FALSE; // ** true：显示的页码 false:显示第多少条记录
@@ -52,12 +53,83 @@ class WebSite extends CI_Controller {
 					"url" => $_POST["url"],
 					"description" => $_POST["description"]
 				);
-			$this->db->insert("tbl_WebSite", $data);
 			
-			$rows = $this->db->affected_rows();
-			$wsID = $this->db->insert_id();
+			// ** load the model and get results
+			$this->load->model('website/Mdl_website');
 			
-			if ($rows > 0 && $wsID > 0) {
+			$result = $this->Mdl_website->insert($data);
+			
+			if ($result["return"] > 0 && $result["lastID"] > 0) {
+				$this->url("website/all");
+			} else {
+				$info = array( 
+						"error" => "Failed to insert new web site!"
+					);
+				$this->path("errors/error", $info);
+			}
+		}
+	}
+	
+	public function remove() {
+		
+		if ( !isset( $_GET["websiteID"] ) ) {
+		
+			$info = array(
+					"error" => "NullParameter of websiteID!"
+			);
+			$this->path("errors/error", $info);
+		
+		} else {
+			// ** load the model and get results
+			$this->load->model('website/Mdl_website');
+			$websiteID = $_GET["websiteID"];
+			$data["result"] = $this->Mdl_website->remove($websiteID);
+			$this->url("website/all");
+		}
+	}
+	
+	public function update() {
+		
+		if ( !isset( $_GET["websiteID"] ) ) {
+				
+			$info = array(
+					"error" => "NullParameter of websiteID!"
+			);
+			$this->path("errors/error", $info);
+				
+		} else {
+			
+			// ** load the model and get results
+			$this->load->model('website/Mdl_website');
+			$websiteID = $_GET["websiteID"];
+			$data["result"] = $this->Mdl_website->queryByID($websiteID);
+			$this->path("website/update", $data);
+		}
+	}
+	
+	public function modify() {
+		
+		if ( !isset( $_POST["websiteID"] ) ) {
+			
+			$info = array(
+					"error" => "Failed to access current web site!"
+				);
+			$this->path("errors/error", $info);
+			
+		} else {
+		
+			$data = array(
+					"websiteID" => $_POST["websiteID"],
+					"url" => $_POST["url"],
+					"description" => $_POST["description"]
+				);
+			
+			// ** load the model and get results
+			$this->load->model('website/Mdl_website');
+			
+			$result = $this->Mdl_website->insert($data);
+			
+			if ($result["return"] > 0 && $result["lastID"] > 0) {
 				$this->url("website/all");
 			} else {
 				$info = array( 
