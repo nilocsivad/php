@@ -23,8 +23,13 @@ class Mdl_website extends CI_Model {
 		return $this->db->where("websiteID", $recordID)->delete(Mdl_website::TABLE_NAME)->affected_rows();
 	}
 	
-	function modify() {
+	function modify($data) {
 		
+		$this->db->where("websiteID", $data["websiteID"])->update(Mdl_website::TABLE_NAME, $data);
+			
+		$rows = $this->db->affected_rows();
+		
+		return array("return"=>$rows);
 	}
 	
 	function count_all() {

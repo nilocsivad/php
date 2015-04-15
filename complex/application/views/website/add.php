@@ -32,7 +32,7 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 	
 		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
 		<p>
-			<a href="<?php echo ( $URL . "/website/all")?>" style="float:right;">All URL Record</a>
+			<a href="<?php echo ( $URL . "/website/all" )?>" style="float:right;">All URL Record</a>
 			<span class="clear"></span>
 		</p>
 	

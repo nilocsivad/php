@@ -127,13 +127,13 @@ class WebSite extends CI_Controller {
 			// ** load the model and get results
 			$this->load->model('website/Mdl_website');
 			
-			$result = $this->Mdl_website->insert($data);
+			$result = $this->Mdl_website->modify($data);
 			
-			if ($result["return"] > 0 && $result["lastID"] > 0) {
+			if ($result["return"] > 0) {
 				$this->url("website/all");
 			} else {
 				$info = array( 
-						"error" => "Failed to insert new web site!"
+						"error" => "Failed to update web site!"
 					);
 				$this->path("errors/error", $info);
 			}

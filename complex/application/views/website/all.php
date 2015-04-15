@@ -28,7 +28,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		
 		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
 		<p>
-			<a href="<?php echo ( $URL . "/website/add")?>" style="float:right;">New URL Record</a>
+			<a href="<?php echo ( $URL . "/website/add" )?>" style="float:right;">New URL Record</a>
 			<span class="clear"></span>
 		</p>
 	
