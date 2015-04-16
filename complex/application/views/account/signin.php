@@ -8,6 +8,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     
-	<title>Welcome to CodeIgniter</title>
+	<title>Sign in - Complex</title>
 	
 	<!-- <link href="<?php echo ( $BASE_URL . "resources/styles/general.css" )?>" rel="stylesheet" type="text/css" /> -->
 	
@@ -47,6 +48,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 	<script type="text/javascript">
 	</script>
+	
 </head>
 <body>
 
@@ -69,7 +71,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
    	</div> <!-- /container -->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="<?php echo ( $BASE_URL . "resources/scripts/ie10-viewport-bug-workaround.js" )?>"></script>
 
 </body>
 </html>
