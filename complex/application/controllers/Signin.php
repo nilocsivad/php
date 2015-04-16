@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SignIn extends CI_Controller {
 	
 	public function index($error = null) {
-		$this->path("account/login", $error);
+		$this->path("account/signin", $error);
 	}
 	
 	private function encrypt($pass) {
@@ -39,7 +39,8 @@ class SignIn extends CI_Controller {
 			if ( count( $result) > 0 ) {
 				$this->session->userdata($result);
 				$this->session->set_userdata(self::SIGNIN_KEY, true);
-				$this->url("/website");
+				
+				$this->url("website");
 			} else {
 				$info = array(
 						"error" => "Login name or password must not be null!"
@@ -76,7 +77,7 @@ class SignIn extends CI_Controller {
 			$result = $this->Mdl_account->insert($data);
 			
 			if ($result["return"] > 0 || $result["lastID"] > 0) {
-				$this->url("/signin");
+				$this->url("signin");
 			} else {
 				$info = array( 
 						"error" => "Failed to register new account!"
