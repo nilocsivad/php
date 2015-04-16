@@ -70,7 +70,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 	<div id="calc_dom" style="margin:0;padding:0;position:absolute;top:0;left:0;width:100%;height:100%;z-index:-50;"></div>
 
-	<div id="container">
+	<div id="container" class="container">
 		
 		<div id="empty_top" style="display:block;width:100%;height:0px;"></div>
 	
@@ -82,8 +82,8 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		</div>
 		
 		<div id="empty_middle" style="display:block;width:100%;height:0px;line-height:100%;color:#ffffff;font-weight:bold;font-size:20px;"><?php echo ( isset( $_COOKIE["error"]) ? $_COOKIE["error"] : "" )?></div>
-	        
-		<form id="signin_form" class="form" action="<?php echo ( $URL . "/signin/validate" )?>" method="post">
+	    
+		<form id="signin_form" class="form" action="<?php echo ( $URL . "/account/validate" )?>" method="post">
 		
 	        <div class="row">
 	        	<div class="col-md-6 col-sm-6 col-xs-12">
@@ -100,7 +100,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	        
 	        <div class="row">
 	        	<div class="col-md-offset-9 col-sm-offset-9 col-xs-offset-6 col-md-3 col-sm-3 col-xs-6">
-	        		<a href="<?php echo ( $URL . "/signin/signup" )?>" class="text-right" style="display:block;width:100%;">Sign up</a>
+	        		<a href="<?php echo ( $URL . "/account/signup" )?>" class="text-right" style="display:block;width:100%;">Sign up</a>
 	        	</div>
 	        </div>
 			
