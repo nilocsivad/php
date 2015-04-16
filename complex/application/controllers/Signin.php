@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SignIn extends CI_Controller {
 	
 	public function index($error = null) {
-		$this->path("login", $error);
+		$this->path("account/login", $error);
 	}
 	
 	private function encrypt($pass) {

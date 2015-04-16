@@ -95,7 +95,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 				</p>
 				<p class="high">
 					<span style="display:inline-block;width:60px;"></span>
-					<input value="Signin" onclick="return valid();" style="cursor:pointer;" type="submit" />
+					<input value="Sign in" onclick="return valid();" style="cursor:pointer;" type="submit" />
 					<span style="display:inline-block;width:60px;"></span>
 					<a href="<?php echo ( $URL . "/signin/page" )?>">Sign up</a>
 				</p>
