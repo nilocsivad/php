@@ -84,10 +84,10 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		<div id="body">
 			
 			<table class="table table-condensed table-striped table-hover table-responsive">
-				<caption><strong><u>All Web Site</u></strong></caption>
+				<caption><strong style="font-size:22px;">All Web Site</strong></caption>
 				<thead>
 					<tr>
-						<th><abbr title="No.N">#</abbr></th>
+						<th><abbr title="Serialize Number">#</abbr></th>
 						<th>URL</th>
 						<th>Description</th>
 						<th>Operating</th>
@@ -115,7 +115,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 							<?php if ( ! ( $this->pagination !== FALSE) ) :?>
 								<?php echo $this->pagination->create_links();?>
 							<?php else : ?>
-								<p class="text-capitalize text-right"><u><?php echo "only one page.";?></u></p>
+								<p class="text-capitalize text-right"><?php echo "only one page.";?></p>
 							<?php endif?>
 						</td>
 					</tr>

@@ -50,7 +50,8 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	<script type="text/javascript">
 	function refreshTime() {
 		var date = new Date();
-		document.getElementById("time_dom").innerText = (time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+		var date_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+		document.getElementById("time_dom").innerHTML = date_time;
 	}
 	window.onload = function() {
 		window.setInterval(refreshTime, 1000);

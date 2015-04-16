@@ -37,9 +37,12 @@ class Account extends CI_Controller {
 			$result = $this->Mdl_account->validate($data);
 			
 			if ( count( $result) > 0 ) {
+				
+				$this->Mdl_account->signinTime( array("lname" => $data["lname"], "last_time" => time()) );
+				
 				$this->session->userdata($result);
 				$this->session->set_userdata(self::SIGNIN_KEY, true);
-
+				
 				set_cookie("error", "", time());
 				$this->url("website");
 			} else {
@@ -77,6 +80,9 @@ class Account extends CI_Controller {
 			$this->load->model('account/Mdl_account');
 				
 			$result = $this->Mdl_account->insert($data);
+			
+			var_dump( $this->db->_error_message() );
+			var_dump( $this->db->_error_number() );
 			
 			if ($result["return"] > 0 || $result["lastID"] > 0) {
 				$this->url("signin");

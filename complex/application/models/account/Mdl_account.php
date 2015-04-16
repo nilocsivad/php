@@ -16,11 +16,20 @@ class Mdl_Account extends CI_Model {
 	function insert($data) {
 		
 		$this->db->insert(Mdl_Account::TABLE_NAME, $data);
+		
+		var_dump( $this->db->_error_message() );
+		var_dump( $this->db->_error_number() );
 			
 		$rows = $this->db->affected_rows();
 		$wsID = $this->db->insert_id();
 		
 		return array("return"=>$rows, "lastID"=>$wsID);
+	}
+	
+	function signinTime($data) {
+		
+		$this->db->where("lname", $data["lname"])->update(Mdl_Account::TABLE_NAME, $data);
+		return $this->db->affected_rows();
 	}
 
 }

@@ -53,7 +53,8 @@ create table tbl_Account
 (
    lname                varchar(64) not null,
    lpass                char(32) not null comment 'MD5ŒÓÃÜŽæŽ¢',
-   status               int(2) default 0 comment '0:Normal  1:Disabled  2:Deleted',
+   status               int(2) default 3 comment '0:Normal  1:Disabled  2:Deleted  3:Invalid',
+   last_time			char(10),
    primary key (lname)
 );
 
