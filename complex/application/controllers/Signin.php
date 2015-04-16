@@ -39,18 +39,20 @@ class SignIn extends CI_Controller {
 			if ( count( $result) > 0 ) {
 				$this->session->userdata($result);
 				$this->session->set_userdata(self::SIGNIN_KEY, true);
-				
+
+				set_cookie("error", "", time());
 				$this->url("website");
 			} else {
 				$info = array(
-						"error" => "Login name or password must not be null!"
+						"error" => "Incorrect Login name or password!"
 					);
-				$this->index($info);
+				set_cookie("error", "Incorrect Login name or password!", time() - 60);
+				$this->url("signin");
 			}
 		}
 	}
 	
-	public function page() {
+	public function signup() {
 		$this->path("account/register");
 	}
 	

@@ -51,7 +51,7 @@ drop table if exists tbl_WebSiteType;
 /*==============================================================*/
 create table tbl_Account
 (
-   lname                varchar(16) not null,
+   lname                varchar(64) not null,
    lpass                char(32) not null comment 'MD5ŒÓÃÜŽæŽ¢',
    status               int(2) default 0 comment '0:Normal  1:Disabled  2:Deleted',
    primary key (lname)

@@ -21,8 +21,8 @@ class WebSite extends CI_Controller {
 			$config['base_url'] = $this->base_url . '/website/all/';
 			$config['total_rows'] = $total_rows;
 			$config['per_page'] = WebSite::PAGE_SIZE;
-			$config['full_tag_open'] = '<div>';
-			$config['full_tag_close'] = '</div>';
+			$config['full_tag_open'] = '<p class="text-capitalize text-right">';
+			$config['full_tag_close'] = '</p>';
 			$config['use_page_numbers'] = FALSE; // ** true：显示的页码 false:显示第多少条记录
 			$this->pagination->initialize($config);
 		}
