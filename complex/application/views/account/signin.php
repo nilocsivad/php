@@ -16,7 +16,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 	<meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="<?php echo ( $BASE_URL . "resources/icons/complex-logo.ico" )?>">
     
 	<title>Sign in - Complex</title>
 	
@@ -30,6 +30,15 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	<style type="text/css">	
 	body {
 		background:#2e2e2e;
+	}
+	
+	a:link,a:visited{
+		color:#ffffff;
+		text-decoration:underline;
+	}
+	a:hover,a:active{
+		color:#6633ff;
+		text-decoration:underline;
 	}
 	
 	#signin_form {
@@ -77,7 +86,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		<div style="display:block;width:100%;min-height:200px;">
 			<h1 class="text-center text-uppercase" style="color:#ffffff;font-size:60px;height:60px;">Welcome to here!</h1>
 			<div style="display:block;width:100%;height:100px;background:url('<?php echo ( $BASE_URL . "resources/images/signin-bg.png" )?>') no-repeat center;">
-		        <p class="text-center" style="color:#ffffff;font-size:30px;height:100px;line-height:100px;">Sign in to Complex.</p>
+		        <p class="text-center" style="color:#ffffff;font-size:30px;height:100px;line-height:100px;">Sign in to <a href="<?php echo $URL?>">Complex</a>.</p>
 			</div>
 		</div>
 		
