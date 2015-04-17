@@ -42,6 +42,8 @@ drop table if exists tbl_Account;
 
 drop table if exists tbl_DoubleColorBall;
 
+drop table if exists tbl_Sys_Items;
+
 drop table if exists tbl_WebSite;
 
 drop table if exists tbl_WebSiteType;
@@ -77,14 +79,27 @@ create table tbl_DoubleColorBall
 );
 
 /*==============================================================*/
+/* Table: tbl_Sys_Items                                           */
+/*==============================================================*/
+create table tbl_Sys_Items
+(
+   itemID               int not null auto_increment,
+   title                text,
+   href			        text,
+   number               int(2),
+   sign               	int(2),
+   primary key (itemID)
+);
+
+/*==============================================================*/
 /* Table: tbl_WebSite                                           */
 /*==============================================================*/
 create table tbl_WebSite
 (
-   siteID               int not null auto_increment,
+   websiteID            int not null auto_increment,
    url                  text,
    description          text,
-   primary key (siteID)
+   primary key (websiteID)
 );
 
 /*==============================================================*/

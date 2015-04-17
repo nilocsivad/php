@@ -77,7 +77,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		var area = $("#item-area");
 		var area_w = area.width();
 		var i_count = area_w % 160;
-		area.css("padding-left", (i_count / 2 - 1) + "px");
+		area.css("padding-left", (i_count / 2 - 10) + "px");
 	});
 	</script>
 	
@@ -100,7 +100,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 			
 			<div id="item-area" class="col-sm-12">
 				<?php foreach ( $items as $item ) : ?>
-					<a class="item"><?php echo $item["text"]?></a>				
+					<a class="item" href="<?php echo $item["href"] ?>"><?php echo $item["title"] ?></a>				
 				<?php endforeach;?>
 			</div>
 		</div>

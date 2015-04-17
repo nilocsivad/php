@@ -5,15 +5,11 @@ class Switcher extends CI_Controller {
 	
 	public function index() {
 		
-		$data["items"] = array(
-				array( "text" => "QR二维码", "href" => "http://" ),
-				array( "text" => "MD5/SHA1...", "href" => "http://" ),
-				array( "text" => "网址收藏", "href" => "http://" ),
-				array( "text" => "Four", "href" => "http://" ),
-				array( "text" => "Five", "href" => "http://" ),
-				array( "text" => "Six", "href" => "http://" ),
-				array( "text" => "Seven", "href" => "http://" )
-			);
+		// ** load the model and get results
+		$this->load->model('switcher/Mdl_switcher');
+		
+		$data["items"] = $this->Mdl_switcher->get_items()->result_array();
+		var_dump( $data["items"] );
 		
 		$this->path("switcher/items", $data);
 	}

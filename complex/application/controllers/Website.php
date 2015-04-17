@@ -59,6 +59,8 @@ class WebSite extends CI_Controller {
 			
 			$result = $this->Mdl_website->insert($data);
 			
+			var_dump($this->db->error());
+			
 			if ($result["return"] > 0 || $result["lastID"] > 0) {
 				$this->url("website/all");
 			} else {
