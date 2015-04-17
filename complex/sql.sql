@@ -117,6 +117,10 @@ create table tbl_WebSiteType
 
 
 
+INSERT INTO tbl_Sys_Items VALUES(null, "New Web Site", "", 1, 0);
+
+
+
 
 mysql> grant insert, delete, update, select on db_full.* to php_ci;
 Query OK, 0 rows affected (0.00 sec)
