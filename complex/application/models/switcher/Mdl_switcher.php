@@ -9,8 +9,12 @@ class Mdl_Switcher extends CI_Model {
 		parent::__construct();
 	}
 	
+	function count_all() {
+		return $this->db->count_all(Mdl_switcher::TABLE_NAME);
+	}
+	
 	function get_items($sign = 0) {
-		return $this->db->select(" title, href ")->get(Mdl_Switcher::TABLE_NAME);
+		return $this->db->get(Mdl_switcher::TABLE_NAME);
 	}
 	
 }
