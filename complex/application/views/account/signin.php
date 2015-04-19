@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
-$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>
@@ -86,13 +85,13 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		<div style="display:block;width:100%;min-height:200px;">
 			<h1 class="text-center text-uppercase" style="color:#ffffff;font-size:60px;height:60px;">Welcome to here!</h1>
 			<div style="display:block;width:100%;height:100px;background:url('<?php echo ( $BASE_URL . "resources/images/signin-bg.png" )?>') no-repeat center;">
-		        <p class="text-center" style="color:#ffffff;font-size:30px;height:100px;line-height:100px;">Sign in to <a href="<?php echo $URL?>">Complex</a>.</p>
+		        <p class="text-center" style="color:#ffffff;font-size:30px;height:100px;line-height:100px;">Sign in to <a href="<?php echo site_url() ?>">Complex</a>.</p>
 			</div>
 		</div>
 		
-		<div id="empty_middle" style="display:block;width:100%;height:0px;line-height:100%;color:#ffffff;font-weight:bold;font-size:20px;"><?php echo ( isset( $_COOKIE["error"]) ? $_COOKIE["error"] : "" )?></div>
+		<div id="empty_middle" style="display:block;width:100%;height:0px;line-height:100%;color:#ffffff;font-weight:bold;font-size:20px;"><?php echo ( isset( $_COOKIE["error"]) ? $_COOKIE["error"] : "" ) ?></div>
 	    
-		<form id="signin_form" class="form" action="<?php echo ( $URL . "/account/validate" )?>" method="post">
+		<form id="signin_form" class="form" action="<?php echo site_url( "account/validate" ) ?>" method="post">
 		
 	        <div class="row">
 	        	<div class="col-md-6 col-sm-6 col-xs-12">
@@ -109,7 +108,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	        
 	        <div class="row">
 	        	<div class="col-md-offset-9 col-sm-offset-9 col-xs-offset-6 col-md-3 col-sm-3 col-xs-6">
-	        		<a href="<?php echo ( $URL . "/account/signup" )?>" class="text-right" style="display:block;width:100%;">Sign up</a>
+	        		<a href="<?php echo site_url( "account/signup" ) ?>" class="text-right" style="display:block;width:100%;">Sign up</a>
 	        	</div>
 	        </div>
 			

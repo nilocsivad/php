@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
-$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
 
-	<link href="<?php echo ( $this->config->item("base_url") . "resources/styles/general.css" )?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo ( $BASE_URL . "resources/styles/general.css" )?>" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	</style>
 	<script type="text/javascript">
@@ -31,15 +30,15 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 
 	<div id="container">
 	
-		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
+		<h1><a href="<?php echo site_url() ?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
 		<p>
-			<a href="<?php echo ( $URL . "/website/all" )?>" style="float:right;">All URL Record</a>
+			<a href="<?php echo site_url( "website/all" )?>" style="float:right;">All URL Record</a>
 			<span class="clear"></span>
 		</p>
 	
 		<div id="body">
 		
-			<form id="website_new_form" action="<?php echo ( $URL . "/website/insert" )?>" method="post">
+			<form id="website_new_form" action="<?php echo site_url( "website/insert" ) ?>" method="post">
 				<p class="high">
 					<span style="display:inline-block;width:80px;text-align:right;">URL:</span>
 					<input name="url" style="width:300px;" type="text" />

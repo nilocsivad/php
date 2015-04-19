@@ -8,10 +8,7 @@ class Switcher extends CI_Controller {
 		// ** load the model and get results
 		$this->load->model('switcher/Mdl_switcher');
 		
-		var_dump( $this->Mdl_switcher->count_all() );
-		
 		$data["items"] = $this->Mdl_switcher->get_items()->result_array();
-		var_dump( $data["items"] );
 		
 		$this->path("switcher/items", $data);
 	}

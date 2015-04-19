@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
-$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>
@@ -87,12 +86,12 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		<div id="empty_top" style="display:block;width:100%;height:0px;"></div>
 	
 		<div style="display:block;width:100%;height:120px;background:url('<?php echo ( $BASE_URL . "resources/images/signin-bg.png" )?>') no-repeat center;">
-	        <p class="text-center" style="color:#ffffff;font-size:26px;height:120px;line-height:120px;">Create QR Image By <a href="<?php echo $URL?>">Complex</a>.</p>
+	        <p class="text-center" style="color:#ffffff;font-size:26px;height:120px;line-height:120px;">Create QR Image By <a href="<?php echo site_url() ?>">Complex</a>.</p>
 		</div>
 		
 		<div id="empty_middle" style="display:block;width:100%;height:0px;line-height:100%;color:#ffffff;font-weight:bold;font-size:20px;"><?php echo ( isset( $_COOKIE["error"]) ? $_COOKIE["error"] : "" )?></div>
 		
-		<form id="signup_form" class="form-horizontal" action="<?php echo ( $URL . "/signin/register" )?>" method="post">
+		<form id="signup_form" class="form-horizontal" action="<?php echo site_url( "signin/register" ) ?>" method="post">
 			<div class="form-group">
 				<div class="col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6">
 					<img src="" />

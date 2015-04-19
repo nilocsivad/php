@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
-$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>
@@ -34,20 +33,30 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	}
 	
 	body {
-		background-color:#fff;
+		background:#2e2e2e;
 		font:13px/20px normal Helvetica, Arial, sans-serif;
-		color:#4F5155;
+		color:#cccccc;
+	}
+	
+	a:link,a:visited{
+		color:#00bbbb;
+	}
+	a:hover,a:active{
+		color:#00bbbb;
+		text-decoration:underline;
+	}
+	
+	table, tr, td {
+		background:#2e2e2e;
 	}
 	
 	#container {
-		min-height:1500px;
 	}
 	
 	#body {
 		padding:8px;
-		min-height:1000px;
-		border:1px solid #D0D0D0;
-		box-shadow:0 0 8px #D0D0D0;
+/* 		border:1px solid #D0D0D0; */
+/* 		box-shadow:0 0 8px #D0D0D0; */
 	}
 	</style>
 	
@@ -73,10 +82,10 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 
 	<div id="container" class="container">
 		
-		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Develop By CodeIgniter!</a></h1>
+		<h1><a href="<?php echo site_url() ?>">Welcome to <b>Complex</b> Develop By CodeIgniter!</a></h1>
 		<!-- 
 		<p>
-			<a href="<?php echo ( $URL . "/website/add" )?>" style="float:right;">New URL Record</a>
+			<a href="<?php echo site_url( "website/add" ) ?>" style="float:right;">New URL Record</a>
 			<span class="clear"></span>
 		</p>
 		 -->
@@ -84,7 +93,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 		<div id="body">
 			
 			<table class="table table-condensed table-striped table-hover table-responsive">
-				<caption><strong style="font-size:22px;">All Web Site</strong></caption>
+				<caption style="width:100%;"><strong style="font-size:22px;color:gray;">All Web Site</strong> <a href="<?php echo site_url( "website/add" ) ?>" style="float:right;margin-right:10px;">New Web Site</a></caption>
 				<thead>
 					<tr>
 						<th><abbr title="Serialize Number">#</abbr></th>
@@ -99,12 +108,12 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 						<?php $no++ ?>
 						<tr>
 							<td title="<?php echo $no?>"><div class="cell"><?php echo $no?></div></td>
-							<td title="<?php echo $row["url"]?>"><div class="cell"><?php echo $row["url"]?></div></td>
+							<td title="<?php echo $row["url"]?>"><div class="cell"><a href="<?php echo $row["url"]?>" target="_blank"><?php echo $row["url"]?></a></div></td>
 							<td title="<?php echo $row["description"]?>"><div class="cell"><?php echo $row["description"]?></div></td>
 							<td>
-								<a href="<?php echo ( $URL . "/website/remove?websiteID=" . $row["websiteID"])?>">Delete</a>
+								<a href="<?php echo site_url( "website/remove?websiteID=" . $row["websiteID"] ) ?>">Delete</a>
 								<span>&nbsp;</span>
-								<a href="<?php echo ( $URL . "/website/update?websiteID=" . $row["websiteID"])?>">Update</a>
+								<a href="<?php echo site_url( "website/update?websiteID=" . $row["websiteID"] ) ?>">Update</a>
 							</td>
 						</tr>
 					<?php endforeach;?>

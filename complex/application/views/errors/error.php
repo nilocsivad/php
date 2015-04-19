@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
+$BASE_URL = ( $this->config->item("base_url") );
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
 
-	<link href="<?php echo $URL?>/resources/general.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo ( $BASE_URL . "resources/general.css" ) ?>" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	</style>
 	<script type="text/javascript">
@@ -23,7 +23,7 @@ $URL = ( $this->config->item("base_url") . $this->config->item("index_page") );
 
 	<div id="container">
 	
-		<h1><a href="<?php echo $URL?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
+		<h1><a href="<?php echo site_url() ?>">Welcome to <b>Complex</b> Development By CodeIgniter!</a></h1>
 	
 		<div id="body">
 		

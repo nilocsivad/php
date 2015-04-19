@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
-$URL = ( $BASE_URL . $this->config->item("index_page") );
 ?>
 
 <!DOCTYPE html>
@@ -41,14 +40,14 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 	.item{
 		float:left;
-		color:#ffffff;
+		color:#cccccc;
 		display:block;
 		width:150px;
 		height:150px;
 		line-height:150px;
 		text-align:center;
 		vertical-align:middle;
-		border:4px solid #ffffff;
+		border:4px solid #cccccc;
 		-moz-border-radius:50%;
 		-webkit-border-radius:50%;
 		border-radius:50%;
@@ -76,8 +75,11 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	$(function() {
 		var area = $("#item-area");
 		var area_w = area.width();
-		var i_count = area_w % 160;
-		area.css("padding-left", (i_count / 2 - 10) + "px");
+		var i_w = area_w % 160;
+		var i_c = window.parseInt( area_w / 160, 10 );
+		var i_l = window.parseInt( area.find(".item").length, 10 );
+		var add_w = area_w > 900 ? 50 : area_w > 700 ? 30 : -10;
+		area.css("padding-left", ( i_l < i_c ? (area_w - i_l * 160) / 2 : i_w + 50 ) + "px");
 	});
 	</script>
 	
@@ -92,7 +94,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 	
 		<div style="display:block;width:100%;min-height:120px;">
 			<div style="display:block;width:100%;height:110px;background:url('<?php echo ( $BASE_URL . "resources/images/signin-bg.png" )?>') no-repeat center;">
-		        <p class="text-center" style="color:#ffffff;font-size:30px;height:110px;line-height:110px;">Welcome to Complex.</p>
+		        <p class="text-center" style="color:#cccccc;font-size:30px;height:110px;line-height:110px;">Welcome to Complex.</p>
 			</div>
 		</div>
 		
@@ -100,7 +102,7 @@ $URL = ( $BASE_URL . $this->config->item("index_page") );
 			
 			<div id="item-area" class="col-sm-12">
 				<?php foreach ( $items as $item ) : ?>
-					<a class="item" href="<?php echo $item["href"] ?>"><?php echo $item["title"] ?></a>				
+					<a class="item" href="<?php echo site_url( $item["href"]  ) ?>"><?php echo $item["title"] ?></a>				
 				<?php endforeach;?>
 			</div>
 		</div>
