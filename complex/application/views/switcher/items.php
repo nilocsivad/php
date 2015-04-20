@@ -74,14 +74,16 @@ $BASE_URL = ( $this->config->item("base_url") );
 	
 	<script type="text/javascript">
 	$(function() {
+		var c_width = $("div[id='container'][class='container']").width();
 		var area = $("#item-area");
 		var area_w = area.width();
 		var i_w = area_w % 160;
 		var i_c = window.parseInt( area_w / 160, 10 );
 		var i_l = window.parseInt( area.find(".item").length, 10 );
-		var add_w = area_w > 900 ? 50 : area_w > 700 ? 20 : -10;
-		//window.alert(area_w + "==>" + i_w + "=>" + i_c + "=>" + i_l + "=>" + add_w);
-		area.css("padding-left", ( i_l < i_c ? (area_w - i_l * 160) / 2 : i_w + add_w ) + "px");
+		var add_w = area_w >= 1100 ? 60 : area_w > 900 ? -50 : -10;
+		//window.alert(c_width + "-=>" + area_w + "==>" + i_w + "=>" + i_c + "=>" + i_l + "=>" + add_w);
+		//area.css("padding-left", ( i_l < i_c ? (area_w - i_l * 160) / 2 : i_w + add_w ) + "px");
+		area.css("padding-left", ( i_w / 2 - 4 ) + "px");
 	});
 	</script>
 	

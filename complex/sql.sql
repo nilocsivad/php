@@ -54,9 +54,9 @@ drop table if exists tbl_WebSiteType;
 create table tbl_Account
 (
    lname                varchar(64) not null,
-   lpass                char(32) not null comment 'MD5ŒÓÃÜŽæŽ¢',
+   lpass                char(32) not null,
    status               int(2) default 3 comment '0:Normal  1:Disabled  2:Deleted  3:Invalid',
-   last_time			char(10),
+   last_time            char(10),
    primary key (lname)
 );
 
@@ -66,7 +66,7 @@ create table tbl_Account
 create table tbl_DoubleColorBall
 (
    date                 char(10) not null,
-   type                 char(1) not null comment '0: ÖÐœ±;  1: Random;  2: Bought',
+   type                 char(1) not null comment '0: Bang;  1: Random;  2: Bought',
    blue                 char(2) not null,
    redA                 char(2),
    redB                 char(2),
@@ -74,7 +74,7 @@ create table tbl_DoubleColorBall
    redD                 char(2),
    redE                 char(2),
    redF                 char(2),
-   bang                 char(1) comment '0: ÎŽÖÐœ±;  1: ÖÐœ±',
+   bang                 char(1) comment '0: ;  1: Bang',
    primary key (date, type, blue)
 );
 
@@ -117,7 +117,9 @@ create table tbl_WebSiteType
 
 
 
-INSERT INTO tbl_Sys_Items VALUES(null, "New Web Site", "", 1, 0);
+INSERT INTO tbl_Sys_Items VALUES(null, "Web Site", "website", 1, 0);
+INSERT INTO tbl_Sys_Items VALUES(null, "Encrypt", "security", 2, 0);
+INSERT INTO tbl_Sys_Items VALUES(null, "QR", "qrcode", 3, 0);
 
 
 
