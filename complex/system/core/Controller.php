@@ -104,30 +104,24 @@ class CI_Controller {
 	const SESSION_KEY = "SIGNIN_SESSION";
 	
 	protected function valid_session() {
-		
-		$this->load->helper("url");
-		
-		if ( $this->session->userdata(self::SIGNIN_KEY) == false ) {
-			$this->path("login");
-			return;
+		if ( !isset( $this->session ) || $this->session->userdata(self::SIGNIN_KEY) == null || $this->session->userdata(self::SESSION_KEY) == null || $this->session->userdata(self::SIGNIN_KEY) == false ) {
+			echo( self::SESSION_KEY . "##########" );
+			$this->url("account");
+			return false;
 		}
+		echo( self::SIGNIN_KEY . "$$$$$$$$" );
+		return true;
 	}
 	
 	/**
 	 * jump to ~~~
 	 */
 	protected function go() {
-		
 		if ( isset( $_GET["path"]) ) {
-				
 			$this->path( $_GET["path"] );
-				
 		} else if ( isset( $_GET["url"]) ) {
-				
 			$this->url( $_GET["url"] );			
-				
 		} else {
-				
 			$this->load->view("welcome_message");
 		}
 	}
@@ -141,7 +135,7 @@ class CI_Controller {
 	
 	protected function url($url) {
 		
-		$url = ( empty( $url ) ? "/p" : ("/" . $url) );
+		$url = ( empty( $url ) ? "" : ("/" . $url) );
 		
 		header("Location:" . $this->base_url . $url);
 	}

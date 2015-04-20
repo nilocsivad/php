@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $BASE_URL = ( $this->config->item("base_url") );
+$TIME = time();
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +83,10 @@ $BASE_URL = ( $this->config->item("base_url") );
 
 	<div id="container" class="container">
 		
-		<h1><a href="<?php echo site_url() ?>">Welcome to <b>Complex</b> Develop By CodeIgniter!</a></h1>
+		<h1><a href="<?php echo site_url() . "?t=" . $TIME ?>">Welcome to <b>Complex</b> Develop By CodeIgniter!</a></h1>
 		<!-- 
 		<p>
-			<a href="<?php echo site_url( "website/add" ) ?>" style="float:right;">New URL Record</a>
+			<a href="<?php echo site_url( "website/add" ) . "?t=" . $TIME ?>" style="float:right;">New URL Record</a>
 			<span class="clear"></span>
 		</p>
 		 -->
@@ -93,7 +94,7 @@ $BASE_URL = ( $this->config->item("base_url") );
 		<div id="body">
 			
 			<table class="table table-condensed table-striped table-hover table-responsive">
-				<caption style="width:100%;"><strong style="font-size:22px;color:gray;">All Web Site</strong> <a href="<?php echo site_url( "website/add" ) ?>" style="float:right;margin-right:10px;">New Web Site</a></caption>
+				<caption style="width:100%;"><strong style="font-size:22px;color:gray;">All Web Site</strong> <a href="<?php echo site_url( "website/add" ) . "?t=" . $TIME ?>" style="float:right;margin-right:10px;">New Web Site</a></caption>
 				<thead>
 					<tr>
 						<th><abbr title="Serialize Number">#</abbr></th>
@@ -108,12 +109,12 @@ $BASE_URL = ( $this->config->item("base_url") );
 						<?php $no++ ?>
 						<tr>
 							<td title="<?php echo $no?>"><div class="cell"><?php echo $no?></div></td>
-							<td title="<?php echo $row["url"]?>"><div class="cell"><a href="<?php echo $row["url"]?>" target="_blank"><?php echo $row["url"]?></a></div></td>
+							<td title="<?php echo $row["url"]?>"><div class="cell"><a href="<?php echo $row["url"] ?>" target="_blank"><?php echo $row["url"]?></a></div></td>
 							<td title="<?php echo $row["description"]?>"><div class="cell"><?php echo $row["description"]?></div></td>
 							<td>
-								<a href="<?php echo site_url( "website/remove?websiteID=" . $row["websiteID"] ) ?>">Delete</a>
+								<a href="<?php echo site_url( "website/remove?websiteID=" . $row["websiteID"] ) . "&t=" . $TIME ?>">Delete</a>
 								<span>&nbsp;</span>
-								<a href="<?php echo site_url( "website/update?websiteID=" . $row["websiteID"] ) ?>">Update</a>
+								<a href="<?php echo site_url( "website/update?websiteID=" . $row["websiteID"] ) . "&t=" . $TIME ?>">Update</a>
 							</td>
 						</tr>
 					<?php endforeach;?>

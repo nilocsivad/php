@@ -52,6 +52,7 @@ $BASE_URL = ( $this->config->item("base_url") );
 		-webkit-border-radius:50%;
 		border-radius:50%;
 		margin:10px;
+		margin-left:0;
 	}
 	</style>
 	
@@ -78,8 +79,9 @@ $BASE_URL = ( $this->config->item("base_url") );
 		var i_w = area_w % 160;
 		var i_c = window.parseInt( area_w / 160, 10 );
 		var i_l = window.parseInt( area.find(".item").length, 10 );
-		var add_w = area_w > 900 ? 50 : area_w > 700 ? 30 : -10;
-		area.css("padding-left", ( i_l < i_c ? (area_w - i_l * 160) / 2 : i_w + 50 ) + "px");
+		var add_w = area_w > 900 ? 50 : area_w > 700 ? 20 : -10;
+		//window.alert(area_w + "==>" + i_w + "=>" + i_c + "=>" + i_l + "=>" + add_w);
+		area.css("padding-left", ( i_l < i_c ? (area_w - i_l * 160) / 2 : i_w + add_w ) + "px");
 	});
 	</script>
 	

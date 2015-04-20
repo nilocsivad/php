@@ -40,11 +40,11 @@ class Account extends CI_Controller {
 				
 				$this->Mdl_account->signinTime( array("lname" => $data["lname"], "last_time" => time()) );
 				
-				$this->session->userdata($result);
+				$this->session->set_userdata(self::SESSION_KEY, $result);
 				$this->session->set_userdata(self::SIGNIN_KEY, true);
 				
 				set_cookie("error", "", time());
-				$this->url("website");
+				$this->url("");
 			} else {
 				$info = array(
 						"error" => "Incorrect Login name or password!"

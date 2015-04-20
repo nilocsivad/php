@@ -35,10 +35,18 @@ class WebSite extends CI_Controller {
 	}
 	
 	public function add() {
+		
+		if ( ! $this->valid_session() ) {
+			return;
+		}
 		$this->path("website/add");
 	}
 	
 	public function insert() {
+
+		if ( ! $this->valid_session() ) {
+			return;
+		}
 		
 		if ( !isset( $_POST["url"] ) ) {
 			
@@ -73,6 +81,10 @@ class WebSite extends CI_Controller {
 	}
 	
 	public function remove() {
+
+		if ( ! $this->valid_session() ) {
+			return;
+		}
 		
 		if ( !isset( $_GET["websiteID"] ) ) {
 		
@@ -91,6 +103,10 @@ class WebSite extends CI_Controller {
 	}
 	
 	public function update() {
+
+		if ( ! $this->valid_session() ) {
+			return;
+		}
 		
 		if ( !isset( $_GET["websiteID"] ) ) {
 				
@@ -110,6 +126,10 @@ class WebSite extends CI_Controller {
 	}
 	
 	public function modify() {
+
+		if ( ! $this->valid_session() ) {
+			return;
+		}
 		
 		if ( !isset( $_POST["websiteID"] ) ) {
 			
